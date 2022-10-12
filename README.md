@@ -10,11 +10,3 @@ Create a new environment for project
 ```
 conda create -p venv python==3.7 -y
 ```
-Activate env
-```
-conda activate --venv_filepath
-
-```
-connect git cli with ur git hub account
-git config --global user.name
-git config --global user.email

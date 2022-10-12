@@ -38,9 +38,12 @@ for i in range(len(messages)):
     
 tfidf= TfidfVectorizer(max_features=5000)
 X= tfidf.fit_transform(corpus).toarray()    
+# pickling the text processing
+import pickle
 
 y=pd.get_dummies(messages['label'],drop_first=True)
 
+#Training and testing model
 from sklearn.model_selection import train_test_split
 
 X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.3,random_state=42)
@@ -53,5 +56,5 @@ from sklearn.metrics import classification_report,confusion_matrix
 print(classification_report(y_test, y_prediction))
 print(confusion_matrix(y_test, y_prediction))
 
-import pickle
+#pickling model file for deployment
 pickle.dump(NB_model,open('SpamClassifier.pickle','wb'))
